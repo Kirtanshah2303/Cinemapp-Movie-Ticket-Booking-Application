@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "704442875846",
+    "firebase_url": "https://sgplayout-d8c33.firebaseio.com",
+    "project_id": "sgplayout-d8c33",
+    "storage_bucket": "sgplayout-d8c33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704442875846:android:33fe361a83b51c73373cc7",
+        "android_client_info": {
+          "package_name": "com.appofkirtan.sgplayout"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "704442875846-89iskvdf1kh66jkemn9o10hdqefha4un.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC99fVrsiahSVJKZTgjSABpZwUPQzRYQu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "704442875846-89iskvdf1kh66jkemn9o10hdqefha4un.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

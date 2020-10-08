@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_color">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:background="@drawable/fragment_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="Movie Screen This way"
+                android:textColor="#878282"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.16" />
+
+            <ToggleButton
+                android:id="@+id/seat1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="1"
+                android:textOff="1"
+                android:textOn="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.132"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.323"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat2"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="180dp"
+                android:background="@drawable/ic_seat"
+                android:text="2"
+                android:textOff="2"
+                android:textOn="2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.068"
+                app:layout_constraintStart_toEndOf="@+id/seat1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.323"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="132dp"
+                android:background="@drawable/ic_seat"
+                android:text="3"
+                android:textOff="3"
+                android:textOn="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.058"
+                app:layout_constraintStart_toEndOf="@+id/seat2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.323"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat4"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="112dp"
+                android:background="@drawable/ic_seat"
+                android:text="4"
+                android:textOff="4"
+                android:textOn="4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/seat3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.324"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/ic_seat"
+                android:text="5"
+                android:textOff="5"
+                android:textOn="5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/seat4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.323"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="6"
+                android:textOff="6"
+                android:textOn="6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat1"
+                app:layout_constraintTop_toBottomOf="@+id/seat1"
+                app:layout_constraintVertical_bias="0.027"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat7"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="7"
+                android:textOff="7"
+                android:textOn="7"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat6"
+                app:layout_constraintTop_toBottomOf="@+id/seat2"
+                app:layout_constraintVertical_bias="0.025"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat8"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="8"
+                android:textOff="8"
+                android:textOn="8"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat3"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat7"
+                app:layout_constraintTop_toBottomOf="@+id/seat3"
+                app:layout_constraintVertical_bias="0.025"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat9"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="9"
+                android:textOff="9"
+                android:textOn="9"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat4"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat8"
+                app:layout_constraintTop_toBottomOf="@+id/seat4"
+                app:layout_constraintVertical_bias="0.025"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat10"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="10"
+                android:textOff="10"
+                android:textOn="10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat5"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat9"
+                app:layout_constraintTop_toBottomOf="@+id/seat5"
+                app:layout_constraintVertical_bias="0.025"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat11"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="11"
+                android:textOff="11"
+                android:textOn="11"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat6"
+                app:layout_constraintTop_toBottomOf="@+id/seat1"
+                app:layout_constraintVertical_bias="0.174"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat12"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="12"
+                android:textOff="12"
+                android:textOn="12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat7"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat6"
+                app:layout_constraintTop_toBottomOf="@+id/seat2"
+                app:layout_constraintVertical_bias="0.174"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat13"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="13"
+                android:textOff="13"
+                android:textOn="13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat8"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat7"
+                app:layout_constraintTop_toBottomOf="@+id/seat3"
+                app:layout_constraintVertical_bias="0.172"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat14"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="14"
+                android:textOff="14"
+                android:textOn="14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat9"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat8"
+                app:layout_constraintTop_toBottomOf="@+id/seat4"
+                app:layout_constraintVertical_bias="0.172"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat15"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="15"
+                android:textOff="15"
+                android:textOn="15"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat10"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat9"
+                app:layout_constraintTop_toBottomOf="@+id/seat5"
+                app:layout_constraintVertical_bias="0.172"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat16"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="16"
+                android:textOff="16"
+                android:textOn="16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat11"
+                app:layout_constraintTop_toBottomOf="@+id/seat1"
+                app:layout_constraintVertical_bias="0.319"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat17"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="17"
+                android:textOff="17"
+                android:textOn="17"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat12"
+                app:layout_constraintTop_toBottomOf="@+id/seat2"
+                app:layout_constraintVertical_bias="0.319"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat18"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="18"
+                android:textOff="18"
+                android:textOn="18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat13"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat13"
+                app:layout_constraintTop_toBottomOf="@+id/seat3"
+                app:layout_constraintVertical_bias="0.319"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat19"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="19"
+                android:textOff="19"
+                android:textOn="19"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat14"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat13"
+                app:layout_constraintTop_toBottomOf="@+id/seat4"
+                app:layout_constraintVertical_bias="0.319"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat20"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="20"
+                android:textOff="20"
+                android:textOn="20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat15"
+                app:layout_constraintTop_toBottomOf="@+id/seat5"
+                app:layout_constraintVertical_bias="0.319"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat21"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="21"
+                android:textOff="21"
+                android:textOn="21"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat11"
+                app:layout_constraintTop_toBottomOf="@+id/seat1"
+                app:layout_constraintVertical_bias="0.462"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat22"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="22"
+                android:textOff="22"
+                android:textOn="22"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat12"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat12"
+                app:layout_constraintTop_toBottomOf="@+id/seat2"
+                app:layout_constraintVertical_bias="0.462"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat23"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="23"
+                android:textOff="23"
+                android:textOn="23"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat13"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat13"
+                app:layout_constraintTop_toBottomOf="@+id/seat3"
+                app:layout_constraintVertical_bias="0.462"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat24"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="24"
+                android:textOff="24"
+                android:textOn="24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat14"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/seat13"
+                app:layout_constraintTop_toBottomOf="@+id/seat4"
+                app:layout_constraintVertical_bias="0.462"
+                tools:ignore="MissingConstraints" />
+
+            <ToggleButton
+                android:id="@+id/seat25"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_seat"
+                android:text="25"
+                android:textOff="25"
+                android:textOn="25"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/seat15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/seat15"
+                app:layout_constraintTop_toBottomOf="@+id/seat5"
+                app:layout_constraintVertical_bias="0.462"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="305dp"
+                android:layout_height="13dp"
+                android:background="@drawable/movie_screen_direction"
+                app:layout_constraintBottom_toTopOf="@+id/seat3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.744">
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="104dp"
+                android:background="@drawable/icicibank_card"
+                android:text="Proceed to Payment"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
