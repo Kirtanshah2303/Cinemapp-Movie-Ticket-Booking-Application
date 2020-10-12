@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+
+import www.sanju.motiontoast.MotionToast;
 
 public class Fragment_Signin extends Fragment {
     EditText mEmail,mPassword;
@@ -76,7 +79,11 @@ public class Fragment_Signin extends Fragment {
                         {
                             if(mauth.getCurrentUser().isEmailVerified())
                             {
-                                Toast.makeText(getContext(),"Verified",Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getContext(),"Verified",Toast.LENGTH_LONG).show();
+                                MotionToast.Companion.darkColorToast(getActivity(),"Verified..",
+                                        MotionToast.TOAST_SUCCESS, MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.LONG_DURATION,
+                                        ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                                 Intent intent=new Intent(getActivity(),demoaAtication.class);
                                 getActivity().finish();
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -85,12 +92,21 @@ public class Fragment_Signin extends Fragment {
                             }
                             else
                             {
-                                Toast.makeText(getContext(),"Please verify email to sign in.",Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getContext(),"Please verify email to sign in.",Toast.LENGTH_LONG).show();
+                                MotionToast.Companion.darkColorToast(getActivity(),"Please verify email to sign in.",
+                                        MotionToast.TOAST_WARNING, MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.LONG_DURATION,
+                                        ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                             }
                         }
                         else
                         {
-                            Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+//                            Toast.makeText(getContext(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                            MotionToast.Companion.darkColorToast(getActivity(),task.getException().getMessage()+"",
+                                    MotionToast.TOAST_WARNING, MotionToast.GRAVITY_BOTTOM,
+                                    MotionToast.LONG_DURATION,
+                                    ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
+
                         }
                     }
                 });

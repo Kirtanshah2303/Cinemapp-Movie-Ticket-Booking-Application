@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+
+import www.sanju.motiontoast.MotionToast;
 
 public class Fragment_Signup extends Fragment {
     EditText mUsername,mEmail,mPassword;
@@ -73,10 +76,18 @@ public class Fragment_Signup extends Fragment {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful())
                                     {
-                                        Toast.makeText(getActivity(),"We have sent you a verification link on registered email.Verify email to signup.",Toast.LENGTH_LONG).show();
+//                                        Toast.makeText(getActivity(),"We have sent you a verification link on registered email.Verify email to signup.",Toast.LENGTH_LONG).show();
+                                        MotionToast.Companion.darkColorToast(getActivity(),"We have sent you a verification link on registered email.Verify email to signup.",
+                                                MotionToast.TOAST_INFO, MotionToast.GRAVITY_BOTTOM,
+                                                MotionToast.LONG_DURATION,
+                                                ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                                     }
                                     else {
-                                        Toast.makeText(getActivity(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+//                                        Toast.makeText(getActivity(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                                        MotionToast.Companion.darkColorToast(getActivity(),task.getException().getMessage()+"",
+                                                MotionToast.TOAST_ERROR, MotionToast.GRAVITY_BOTTOM,
+                                                MotionToast.LONG_DURATION,
+                                                ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                                     }
                                 }
                             });
@@ -85,11 +96,19 @@ public class Fragment_Signup extends Fragment {
                         {
                             if(task.getException() instanceof FirebaseAuthUserCollisionException)
                             {
-                                Toast.makeText(getActivity(),"Already Registred",Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getActivity(),"Already Registred",Toast.LENGTH_LONG).show();
+                                MotionToast.Companion.darkColorToast(getActivity(),"Already Registered",
+                                        MotionToast.TOAST_WARNING, MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.LONG_DURATION,
+                                        ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                             }
                             else
                             {
-                                Toast.makeText(getActivity(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+//                                Toast.makeText(getActivity(),task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                                MotionToast.Companion.darkColorToast(getActivity(),task.getException().getMessage()+"",
+                                        MotionToast.TOAST_WARNING, MotionToast.GRAVITY_BOTTOM,
+                                        MotionToast.LONG_DURATION,
+                                        ResourcesCompat.getFont(getActivity(),R.font.helvetica_regular));
                             }
                         }
                     }

@@ -5,6 +5,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -50,6 +51,8 @@ import org.xml.sax.helpers.XMLReaderAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import www.sanju.motiontoast.MotionToast;
 
 public class demoaAtication extends AppCompatActivity {
 
