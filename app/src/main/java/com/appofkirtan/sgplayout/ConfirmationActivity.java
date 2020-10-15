@@ -3,6 +3,7 @@ package com.appofkirtan.sgplayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ConfirmationActivity extends AppCompatActivity {
+
+    public static Activity fd;
 
     ArrayList<Integer> SeatNumber = new ArrayList<Integer>();
     ArrayList<Integer> bookedseat = new ArrayList<Integer>();
@@ -28,6 +31,8 @@ public class ConfirmationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
+
+        fd = this;
 
 
         movienameP = findViewById(R.id.textView7);
@@ -74,6 +79,7 @@ public class ConfirmationActivity extends AppCompatActivity {
                 intent.putExtra("BookedSeat",bookedseat);
                 intent.putExtra("Price",Price);
                 startActivity(intent);
+                finish();
             }
         });
 

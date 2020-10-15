@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -31,6 +32,8 @@ import java.util.Collections;
 
 public class SeatBookingActivity extends AppCompatActivity {
 
+    public static Activity fc;
+
     ToggleButton seat1,seat2,seat3,seat4,seat5;
     ToggleButton seat6,seat7,seat8,seat9,seat10;
     ToggleButton seat11,seat12,seat13,seat14,seat15;
@@ -56,6 +59,8 @@ public class SeatBookingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seat_booking);
+
+        fc = this;
 
 
         final ProgressDialog progressDialog;

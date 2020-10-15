@@ -73,17 +73,17 @@ public class PaymentActivity extends AppCompatActivity {
     //  private long backpressedtime;
 
     CardView axisbank,icicibank;
-    Button savebtn;
+    Button savebtn,homebtn;
 
     Bitmap bitmap;
 
     FirebaseDatabase realtimedatabase;
     DatabaseReference realtimereference;
 
-    ArrayList<Integer> SeatNumber = new ArrayList<Integer>();
-    ArrayList<Integer> bookedseat = new ArrayList<Integer>();
+   public static ArrayList<Integer> SeatNumber = new ArrayList<Integer>();
+   public static ArrayList<Integer> bookedseat = new ArrayList<Integer>();
     //Combined storage Arraylist
-    ArrayList seattemp = new ArrayList();
+   public static ArrayList seattemp = new ArrayList();
 
     TextView amount;
 
@@ -110,9 +110,15 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
+        demoaAtication.fa.finish();
+        demothirdActivity.fb.finish();
+        SeatBookingActivity.fc.finish();
+        ConfirmationActivity.fd.finish();
+
         axisbank = findViewById(R.id.AxisBank);
         savebtn = findViewById(R.id.save);
-        mimage = findViewById(R.id.imageView);
+        homebtn = findViewById(R.id.home);
+//        mimage = findViewById(R.id.imageView);
         Intent intent = getIntent();
         int price = intent.getIntExtra("Price",1);
 
@@ -160,6 +166,16 @@ public class PaymentActivity extends AppCompatActivity {
 
         amountP.setText("Total  Amount = " + Price);*/
 
+        homebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                seattemp.clear();
+                SeatNumber.clear();
+                bookedseat.clear();
+                startActivity(new Intent(PaymentActivity.this,demoaAtication.class));
+                finish();
+            }
+        });
 
 
 
@@ -229,7 +245,7 @@ public class PaymentActivity extends AppCompatActivity {
                                 BitMatrix bitMatrix = multiFormatWriter.encode(validation, BarcodeFormat.QR_CODE,400,400);
                                 BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                                  bitmap = barcodeEncoder.createBitmap(bitMatrix);
-                                mimage.setImageBitmap(bitmap);
+//                                mimage.setImageBitmap(bitmap);
                             }catch (WriterException e){
                                 e.printStackTrace();
                             }
@@ -248,10 +264,16 @@ public class PaymentActivity extends AppCompatActivity {
                                             }else {
                                                 // permission already granted , call pdf save method
                                                 savepdf();
+                                                savebtn.setClickable(false);
+                                                savebtn.setAlpha(.5f);
+                                                savebtn.setText("Saved");
                                             }
                                         }else {
                                             //system OS < Marshmallow  no required to check runtime permission , call savepdf method
                                             savepdf();
+                                            savebtn.setClickable(false);
+                                            savebtn.setAlpha(.5f);
+                                            savebtn.setText("Saved");
                                         }
                                     }
                                 });

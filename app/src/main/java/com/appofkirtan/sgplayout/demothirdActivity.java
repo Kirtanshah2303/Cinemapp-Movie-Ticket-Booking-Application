@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class demothirdActivity extends AppCompatActivity {
+
+    public static Activity fb;
 
     TextView nameMovie;
     ImageView ImageMovie;
@@ -57,6 +60,8 @@ public class demothirdActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demothird);
+
+        fb = this;
 
         nameMovie = findViewById(R.id.MovieName);
         ImageMovie = findViewById(R.id.MovieImage);

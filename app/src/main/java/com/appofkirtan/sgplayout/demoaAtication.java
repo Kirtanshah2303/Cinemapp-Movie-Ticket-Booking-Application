@@ -10,6 +10,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.slice.Slice;
 import android.content.Context;
@@ -56,6 +57,8 @@ import www.sanju.motiontoast.MotionToast;
 
 public class demoaAtication extends AppCompatActivity {
 
+    public static Activity fa;
+
     //Movie selection list for Recycler View Hooking..
     private RecyclerView mRecyclerView;
     private Movie_Adapter mAdepter;
@@ -83,6 +86,10 @@ public class demoaAtication extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demoa_atication);
 
+        fa =this;
+
+        SeatBookingActivity.seatnumber.clear();
+        SeatBookingActivity.demo.clear();
 
         //Defining variables with their IDs.
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -217,8 +224,6 @@ public class demoaAtication extends AppCompatActivity {
 //        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.HORIZONTAL));
         mRecyclerView.setAdapter(mAdepter);
     }
-
-
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)){
