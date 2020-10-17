@@ -30,6 +30,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,7 +74,8 @@ public class PaymentActivity extends AppCompatActivity {
     //  private long backpressedtime;
 
     CardView axisbank,icicibank;
-    Button savebtn,homebtn;
+    Button savebtn;
+    ImageButton homebtn;
 
     Bitmap bitmap;
 
@@ -104,7 +106,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +119,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         axisbank = findViewById(R.id.AxisBank);
         savebtn = findViewById(R.id.save);
-        homebtn = findViewById(R.id.home);
+        homebtn = findViewById(R.id.homeBtn);
 //        mimage = findViewById(R.id.imageView);
         Intent intent = getIntent();
         int price = intent.getIntExtra("Price",1);
