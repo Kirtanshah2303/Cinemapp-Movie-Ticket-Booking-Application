@@ -74,8 +74,8 @@ public class PaymentActivity extends AppCompatActivity {
     //  private long backpressedtime;
 
     CardView axisbank,icicibank;
-    Button savebtn;
-    ImageButton homebtn;
+    Button savebtn,homebtn;
+//    ImageButton homebtn;
 
     Bitmap bitmap;
 
@@ -119,7 +119,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         axisbank = findViewById(R.id.AxisBank);
         savebtn = findViewById(R.id.save);
-        homebtn = findViewById(R.id.homeBtn);
+        homebtn = findViewById(R.id.home);
 //        mimage = findViewById(R.id.imageView);
         Intent intent = getIntent();
         int price = intent.getIntExtra("Price",1);
