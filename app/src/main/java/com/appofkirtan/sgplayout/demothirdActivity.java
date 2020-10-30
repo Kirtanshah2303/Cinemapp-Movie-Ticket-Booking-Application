@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -41,6 +43,11 @@ public class demothirdActivity extends AppCompatActivity {
     String Date,Date2,Date3,Date4;
     String currnttime;
     public static String databasetime,databasedate;
+
+
+//    public static int movieimg;
+
+   public static Bitmap icon;
 
     FirebaseDatabase realtimedatabase;
     DatabaseReference realtimereference1;
@@ -139,10 +146,12 @@ public class demothirdActivity extends AppCompatActivity {
 
         if (getIntent().hasExtra("MovieName") && getIntent().hasExtra("MovieImage")){
             moviename = getIntent().getStringExtra("MovieName");
-            int movieimg = getIntent().getIntExtra("MovieImage",0);
+             int movieimg = getIntent().getIntExtra("MovieImage",0);
 
             nameMovie.setText(moviename);
             ImageMovie.setImageResource(movieimg);
+
+            icon = BitmapFactory.decodeResource(getResources(),movieimg);
 
         }
         DateFormat = new SimpleDateFormat("dd-MM-yyyy");

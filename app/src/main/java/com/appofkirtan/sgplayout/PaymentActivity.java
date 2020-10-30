@@ -73,7 +73,7 @@ public class PaymentActivity extends AppCompatActivity {
 
     //  private long backpressedtime;
 
-    CardView axisbank,icicibank;
+    CardView axisbank,UPI;
     Button savebtn,homebtn;
 //    ImageButton homebtn;
 
@@ -118,6 +118,9 @@ public class PaymentActivity extends AppCompatActivity {
         ConfirmationActivity.fd.finish();
 
         axisbank = findViewById(R.id.AxisBank);
+        UPI = findViewById(R.id.UPI);
+
+
         savebtn = findViewById(R.id.save);
         homebtn = findViewById(R.id.home);
 //        mimage = findViewById(R.id.imageView);
@@ -180,7 +183,118 @@ public class PaymentActivity extends AppCompatActivity {
         });
 
 
+        UPI.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog =new Dialog(PaymentActivity.this);
+                dialog.setContentView(R.layout.upi_information_dialog);
+                dialog.setCanceledOnTouchOutside(true);
+                //set dialog width and height
+                dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                //Set transparent background
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                //set Animation
+                dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
 
+                Button proceed = dialog.findViewById(R.id.proceed_upi);
+                final EditText UPINumber = dialog.findViewById(R.id.upiNumber);
+
+                proceed.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String number = UPINumber.getText().toString().trim();
+                        UPITesting testing = new UPITesting();
+
+                        boolean   reciver =  testing.validateUPINumber(number);
+
+                        if (reciver == true){
+                            seattemp = (ArrayList) SeatNumber.clone();
+                            seattemp.addAll((ArrayList)bookedseat);
+                            // UserHelperclass helperclass=new UserHelperclass(SeatNumber);
+                            realtimereference=realtimedatabase.getReference(demothirdActivity.moviename);
+                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+
+                            if (seattemp.size()==25){
+//                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue("done");
+                                seattemp.add(26);
+                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+                            }
+
+                            Dialog dialog =new Dialog(PaymentActivity.this);
+                            dialog.setContentView(R.layout.success_dialog);
+                            dialog.setCanceledOnTouchOutside(false);
+                            //set dialog width and height
+                            dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                            //Set transparent background
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            //set Animation
+                            dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+
+                            dialog.show();
+
+                            savebtn.setVisibility(View.VISIBLE);
+                            MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+                            try{
+                                BitMatrix bitMatrix = multiFormatWriter.encode(validation, BarcodeFormat.QR_CODE,400,400);
+                                BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                                bitmap = barcodeEncoder.createBitmap(bitMatrix);
+//                                mimage.setImageBitmap(bitmap);
+                            }catch (WriterException e){
+                                e.printStackTrace();
+                            }
+
+
+                            if (savebtn.getVisibility() == View.VISIBLE){
+                                savebtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.M){
+                                            // System OS >= Marshmallow(6.0), check If permission is enabled or not
+                                            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED){
+                                                //permission was not  granted , request it.
+                                                String[] permissoins = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                                                requestPermissions(permissoins,STORAGE_CODE);
+                                            }else {
+                                                // permission already granted , call pdf save method
+                                                savepdf();
+                                                savebtn.setClickable(false);
+                                                savebtn.setAlpha(.5f);
+                                                savebtn.setText("Saved");
+                                            }
+                                        }else {
+                                            //system OS < Marshmallow  no required to check runtime permission , call savepdf method
+                                            savepdf();
+                                            savebtn.setClickable(false);
+                                            savebtn.setAlpha(.5f);
+                                            savebtn.setText("Saved");
+                                        }
+                                    }
+                                });
+                            }
+
+
+
+
+                        }else {
+                            Toast.makeText(PaymentActivity.this,"Something Went wrong try again",Toast.LENGTH_SHORT).show();
+                            Dialog dialog =new Dialog(PaymentActivity.this);
+                            dialog.setContentView(R.layout.upi_error_dialog);
+                            dialog.setCanceledOnTouchOutside(false);
+                            //set dialog width and height
+                            dialog.getWindow().setLayout(WindowManager.LayoutParams.WRAP_CONTENT,WindowManager.LayoutParams.WRAP_CONTENT);
+                            //Set transparent background
+                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            //set Animation
+                            dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
+
+                            dialog.show();
+                        }
+
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         axisbank.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -325,14 +439,18 @@ public class PaymentActivity extends AppCompatActivity {
 
 
             ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
+            ByteArrayOutputStream stream4 = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream3);
+//            demothirdActivity.icon.compress(Bitmap.CompressFormat.PNG, 100, stream4);
             Image maimg = Image.getInstance(stream3.toByteArray());
+//            Image movieimag = Image.getInstance(stream4.toByteArray());
 
             maimg.setAbsolutePosition(350, 500);
             maimg.scalePercent(40);
 //            mDoc.add(maimg);
             //open the document for writing
             mDoc.open();
+//            mDoc.add(movieimag);
             //get text
             String mText ="Registered Email Address : "+demoaAtication.currentuser + "\n\n"+ "Movie : "+demothirdActivity.moviename + "\n\n" + "Date :" + demothirdActivity.databasedate + "\n\n" + "Time :" + demothirdActivity.databasetime + "\n\n" + "Booked Seats : " + SeatNumber;
 //                    add paragraph  to the document
