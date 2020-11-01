@@ -2,6 +2,7 @@ package com.appofkirtan.sgplayout;
 //"Movie : "+demothirdActivity.moviename + "\n" + "Date :" + demothirdActivity.databasedate + "\n" + "Time :" + demothirdActivity.databasetime + "\n" + "Booked Seats : " + seattemp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -51,6 +52,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -428,8 +430,12 @@ public class PaymentActivity extends AppCompatActivity {
 
         //pdf file name
         String mFileName = new SimpleDateFormat("ddMMyyyy_HHmmss", Locale.getDefault()).format(System.currentTimeMillis());
-        //pdf file path
-        String mFilePath = Environment.getExternalStorageDirectory()+ "/" + mFileName +".pdf";
+        //pdf file pathg
+        String mFilePath = Environment.getExternalStorageDirectory()+ "/" +"Cinemapp"+"/"+ mFileName +".pdf";
+        File f = new File(Environment.getExternalStorageDirectory(), "Cinemapp");
+        if (!f.exists()) {
+            f.mkdirs();
+        }
 
 
         try{
@@ -441,18 +447,23 @@ public class PaymentActivity extends AppCompatActivity {
             ByteArrayOutputStream stream3 = new ByteArrayOutputStream();
             ByteArrayOutputStream stream4 = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream3);
-//            demothirdActivity.icon.compress(Bitmap.CompressFormat.PNG, 100, stream4);
+            demothirdActivity.icon.compress(Bitmap.CompressFormat.PNG, 100, stream4);
             Image maimg = Image.getInstance(stream3.toByteArray());
-//            Image movieimag = Image.getInstance(stream4.toByteArray());
+            Image movieimag = Image.getInstance(stream4.toByteArray());
 
-            maimg.setAbsolutePosition(350, 500);
+//            maimg.setAbsolutePosition(350, 500);
             maimg.scalePercent(40);
+
+            movieimag.scalePercent(10);
+
+
+
 //            mDoc.add(maimg);
             //open the document for writing
             mDoc.open();
-//            mDoc.add(movieimag);
+            mDoc.add(movieimag);
             //get text
-            String mText ="Registered Email Address : "+demoaAtication.currentuser + "\n\n"+ "Movie : "+demothirdActivity.moviename + "\n\n" + "Date :" + demothirdActivity.databasedate + "\n\n" + "Time :" + demothirdActivity.databasetime + "\n\n" + "Booked Seats : " + SeatNumber;
+            String mText ="\n"+"Registered Email Address : "+demoaAtication.currentuser + "\n\n"+ "Movie : "+demothirdActivity.moviename + "\n\n" + "Date :" + demothirdActivity.databasedate + "\n\n" + "Time :" + demothirdActivity.databasetime + "\n\n" + "Booked Seats : " + SeatNumber;
 //                    add paragraph  to the document
 //            mDoc.add(new Paragraph(mText));
             mDoc.add(new Paragraph(new Phrase(10f,mText, FontFactory.getFont(FontFactory.COURIER_BOLDOBLIQUE,16f))));
