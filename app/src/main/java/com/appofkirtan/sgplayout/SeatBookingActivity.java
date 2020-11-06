@@ -110,7 +110,7 @@ public class SeatBookingActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
 
 
-        realtimereference = realtimedatabase.getReference(demothirdActivity.moviename).child(demothirdActivity.databasedate).child(demothirdActivity.databasetime);
+        realtimereference = realtimedatabase.getReference(demothirdActivity.moviename).child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child("Seats");
         realtimereference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

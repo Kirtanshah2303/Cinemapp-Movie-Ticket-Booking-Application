@@ -55,11 +55,26 @@
             app:layout_constraintTop_toBottomOf="@+id/Usernamesignin"
             app:layout_constraintVertical_bias="0.003" />
 
+        <Button
+            android:id="@+id/btn_signin"
+            android:layout_width="254dp"
+            android:layout_height="51dp"
+            android:text="Sign-in"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Usernamesignin"
+            app:layout_constraintVertical_bias="0.445" />
+
         <TextView
             android:id="@+id/forgotpassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:text="Forgot Password?"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -67,18 +82,61 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_signin"
             app:layout_constraintVertical_bias="0.113" />
 
-        <Button
-            android:id="@+id/btn_signin"
-            android:layout_width="188dp"
-            android:layout_height="47dp"
-            android:layout_marginTop="27dp"
-            android:text="Sign-in"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword1"
-            app:layout_constraintVertical_bias="0.052" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/signin_txt"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/username"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Full Name :"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/Usernamesignin">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/Usernamesignin"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/signin_txt"-->
+<!--                    app:layout_constraintVertical_bias="0.219"-->
+<!--                    tools:layout_editor_absoluteX="0dp" />-->
+
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/password"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Password :"-->
+<!--                app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword1"-->
+<!--                app:passwordToggleEnabled="true">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/editTextTextPassword1"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="76dp"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    app:layout_constraintBottom_toTopOf="@+id/btn_signin"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/Usernamesignin"-->
+<!--                    app:layout_constraintVertical_bias="1.0"-->
+<!--                    tools:layout_editor_absoluteX="0dp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            -->
+
+<!--        </LinearLayout>-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

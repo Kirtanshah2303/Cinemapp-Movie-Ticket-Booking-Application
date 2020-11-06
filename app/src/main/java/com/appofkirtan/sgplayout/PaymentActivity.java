@@ -36,8 +36,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -75,8 +78,14 @@ public class PaymentActivity extends AppCompatActivity {
 
     //  private long backpressedtime;
 
+    String mail="";
+
     CardView axisbank,UPI;
     Button savebtn,homebtn;
+
+    String Seats="Seats";
+    String currentUser = demoaAtication.currentuser;
+
 //    ImageButton homebtn;
 
     Bitmap bitmap;
@@ -86,6 +95,8 @@ public class PaymentActivity extends AppCompatActivity {
 
    public static ArrayList<Integer> SeatNumber = new ArrayList<Integer>();
    public static ArrayList<Integer> bookedseat = new ArrayList<Integer>();
+
+   ArrayList UserBookedSeat = new ArrayList();
     //Combined storage Arraylist
    public static ArrayList seattemp = new ArrayList();
 
@@ -103,16 +114,28 @@ public class PaymentActivity extends AppCompatActivity {
             "From" +
             "Malav Sukhadia" +
             "Kirtan Shah";
-
-
-
-
-
+    
     @SuppressLint({"SetTextI18n", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
+
+
+        ArrayList list = new ArrayList();
+        for (int i=0;i<currentUser.length();i++){
+            list.add(currentUser.charAt(i));
+        }
+        for (int i=0;i<currentUser.length();i++){
+            if (currentUser.charAt(i)=='.'){
+                list.set(i,"-");
+            }
+        }
+        for (int i=0;i<list.size();i++){
+            mail = mail+list.get(i);
+        }
+
+
 
         demoaAtication.fa.finish();
         demothirdActivity.fb.finish();
@@ -146,6 +169,24 @@ public class PaymentActivity extends AppCompatActivity {
 
 
         realtimedatabase=FirebaseDatabase.getInstance();
+
+
+        realtimereference =realtimedatabase.getReference(demothirdActivity.moviename).child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child("User").child(mail);
+        realtimereference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    //demo.add(Integer.parseInt(snapshot.getValue().toString()));
+                    int temp = Integer.parseInt(snapshot.getValue().toString());
+                    UserBookedSeat.add(temp);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         //Intent intent = getIntent();
        // SeatNumber.add(intent.getIntExtra("SeatNumber",0));
@@ -212,14 +253,16 @@ public class PaymentActivity extends AppCompatActivity {
                         if (reciver == true){
                             seattemp = (ArrayList) SeatNumber.clone();
                             seattemp.addAll((ArrayList)bookedseat);
+                            UserBookedSeat.addAll(SeatNumber);
                             // UserHelperclass helperclass=new UserHelperclass(SeatNumber);
                             realtimereference=realtimedatabase.getReference(demothirdActivity.moviename);
-                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child(Seats).setValue(seattemp);
+                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child("User").child(mail).setValue(UserBookedSeat);
 
                             if (seattemp.size()==25){
 //                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue("done");
                                 seattemp.add(26);
-                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child(Seats).setValue(seattemp);
                             }
 
                             Dialog dialog =new Dialog(PaymentActivity.this);
@@ -335,14 +378,17 @@ public class PaymentActivity extends AppCompatActivity {
                         if (reciver == true){
                             seattemp = (ArrayList) SeatNumber.clone();
                             seattemp.addAll((ArrayList)bookedseat);
+                            UserBookedSeat.addAll(SeatNumber);
                             // UserHelperclass helperclass=new UserHelperclass(SeatNumber);
                             realtimereference=realtimedatabase.getReference(demothirdActivity.moviename);
-                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child(Seats).setValue(seattemp);
+                            realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child("User").child(mail).setValue(UserBookedSeat);
+
 
                             if (seattemp.size()==25){
 //                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue("done");
                                 seattemp.add(26);
-                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).setValue(seattemp);
+                                realtimereference.child(demothirdActivity.databasedate).child(demothirdActivity.databasetime).child(Seats).setValue(seattemp);
                             }
 
                             Dialog dialog =new Dialog(PaymentActivity.this);
